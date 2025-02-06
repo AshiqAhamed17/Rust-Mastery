@@ -1,0 +1,5 @@
+# Ignore target folder in all Rust projects
+**/target/
+
+# Ignore Cargo.lock for all subprojects
+**/Cargo.lock
