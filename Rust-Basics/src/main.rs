@@ -40,6 +40,10 @@ fn main() {
     else {
         println!("Odd Num");
     }
+
+    let condition: bool = true;
+    let ans = if condition {100} else {0};
+    println!("ans is: {}", ans);
     
     // Loops
 
