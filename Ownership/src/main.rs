@@ -1,3 +1,5 @@
+mod borrowing;
+
 fn take_ownership(s: String) {
     println!("Inside function: {}", s);
 }
@@ -32,10 +34,7 @@ fn main() {
     s5 = give_ownership(s5);
     println!("s5: {}", s5);
 
-
-
-
-
-
+    println!("-------------- FROM BORROWING fn -----------------");
+    borrowing::run();
 
 }
