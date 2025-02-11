@@ -3,3 +3,5 @@
 
 # Ignore Cargo.lock for all subprojects
 **/Cargo.lock
+
+**/.DS_Store
