@@ -1,5 +1,6 @@
 mod borrowing;
 
+
 fn take_ownership(s: String) {
     println!("Inside function: {}", s);
 }

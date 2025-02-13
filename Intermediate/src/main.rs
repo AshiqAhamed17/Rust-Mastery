@@ -1,3 +1,4 @@
+mod enums;
 
 // struct User {
 //     active: bool,
@@ -30,5 +31,8 @@ fn main() {
     };
 
     println!("The area of the rectangle is: {}", rect1.area());
+
+    println!("-------------- FROM ENUMS -----------------");
+    enums::run();
     
 }
