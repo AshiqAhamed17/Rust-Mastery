@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 fn main() {
     let mut v1 = vec![1, 2, 3];
 
@@ -35,7 +37,26 @@ fn main() {
     assert_eq!(total, 6);
     println!("The sum is {}", total);
 
-    
+    // * Filter all odd values then double each value and create a new vector.
+    let vect = vec![1, 2, 3, 4, 5];
+    let ans = filter_and_map(vect);
+    println!("{:?}", ans);
+
+    // * Iterators over Hashmaps
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Red"), 20);
+
+    let map_iter = scores.iter();
+    for (key, value) in map_iter {
+        println!("{}: {}", key, value);
+    }
 
 
+}
+
+fn filter_and_map(v: Vec<i32>) -> Vec<i32> {
+    let new_itr = v.iter().filter(|x| *x%2 == 1).map(|x| x * 2);
+    let new_vec: Vec<i32> = new_itr.collect();
+    return new_vec;
 }
