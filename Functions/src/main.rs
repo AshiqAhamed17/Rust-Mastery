@@ -25,16 +25,15 @@ fn main() {
         println!("Count: {}", count);
     };
 
+    let mut add_2 = |a, b| -> i32 { a + b };
+    println!("From Add 2 Closure: {}", add_2(3, 3));
+
+    let mut decrement = | | {
+        count -= 1;
+        println!("Count: {}", count);
+    };
     increment();
     increment();
-
+    decrement();
+    decrement();
 }
-
-
-fn func() {
-    println!("From func Function");
-}
-
-fn f(x: i32) -> i32 {x + 1}
-
-
