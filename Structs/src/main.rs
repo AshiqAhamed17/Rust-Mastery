@@ -1,0 +1,65 @@
+
+struct User {
+    name: String,
+    age: u32,
+    salary: u32,
+    country: String
+}
+
+impl User {
+    fn monthly_salary(&self) -> u32 {
+        return self.salary / 12;
+    }
+
+    fn after_tax(&self) -> f32 {
+        let salary = self.salary as f32;
+
+        if self.country == "England" {
+
+            if salary <= 50_000.0 {
+                return salary * 0.80;
+            } else if salary <= 100_000.0 {
+                return salary * 0.70;
+            } else {
+                return salary * 0.60;
+            }
+
+        }
+
+        else if self.country == "India" {
+
+            if salary <= 50_000.0 {
+                return salary * 0.95;
+            } else if salary <= 100_000.0 {
+                return salary * 0.85;
+            } else {
+                return salary * 0.80;
+            }
+
+        }
+        else {
+            salary
+        }
+    }
+
+    //static function
+    fn info() {
+        println!("This is a User struct which has name, age, salary along with some functions");
+    }
+}
+
+fn main() {
+   
+    let user1 = User {
+        name: String::from("ASH"),
+        age: 20,
+        salary: 10000000,
+        country: String::from("England")
+    };
+
+    println!("name: {}, age: {}", user1.name, user1.age);
+    User::info();
+    println!("Monthly salary : {}", user1.monthly_salary());
+    println!("After tax : {}", user1.after_tax());
+
+}

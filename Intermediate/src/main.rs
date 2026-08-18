@@ -1,4 +1,4 @@
-mod enums;
+//mod enums;
 
 // struct User {
 //     active: bool,
@@ -7,32 +7,43 @@ mod enums;
 //     count: u32
 // }
 
-struct Rect {
-    height: u32,
-    width: u32,
-}
 
-impl Rect {
-    fn area(&self) -> u32 {
-        self.height * self.width //  same as -> return self.height * self.width;
-    }
-}
 fn main() {
-    // let mut user1 = User {
-    //     active: true,
-    //     name: String::from("Justin"), // Short hand syntax -> name: name
-    //     email: String::from("jus@gmail.com"), // Short hand syntax -> name: name
-    //     count: 1,
-    // };
-
-    let rect1 = Rect {
-        height: 5,
-        width: 2,
-    };
-
-    println!("The area of the rectangle is: {}", rect1.area());
-
-    println!("-------------- FROM ENUMS -----------------");
-    enums::run();
     
+    //enums::run();
+
+    let ans = fib(10);
+    println!("{}", ans);
+
+    let my_str = String::from("ZKP is so cool");
+    let str_count = count_str(&my_str);
+    println!("String count: {}", str_count);
+    
+}
+
+fn count_str(s: &str) -> usize {
+    s.chars().count()
+}
+
+fn fib(num: u32) -> u32 {
+    
+    let mut first = 0;
+    let mut sec = 1;
+
+    if num == 0 {
+        return first;
+    }
+
+    if num == 1 {
+        return 1;
+    }
+
+    for _ in 1..num-1 {
+        let temp = sec;
+        sec = first + temp;
+        first = temp;
+    }
+
+    return sec;
+
 }
