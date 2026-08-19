@@ -1,9 +1,18 @@
+#[derive(Debug, PartialEq)]
+enum Country {
+    England,
+    India,
+    USA,
+    Monaco,
+    Italy,
+    Switzerland
+}
 
 struct User {
     name: String,
     age: u32,
     salary: u32,
-    country: String
+    country: Country
 }
 
 impl User {
@@ -14,32 +23,41 @@ impl User {
     fn after_tax(&self) -> f32 {
         let salary = self.salary as f32;
 
-        if self.country == "England" {
+        match self.country {
 
+        Country::England => {
             if salary <= 50_000.0 {
-                return salary * 0.80;
+                salary * 0.80
             } else if salary <= 100_000.0 {
-                return salary * 0.70;
+                salary * 0.70
             } else {
-                return salary * 0.60;
+                salary * 0.60
             }
-
         }
-
-        else if self.country == "India" {
-
+        Country::India => {
             if salary <= 50_000.0 {
-                return salary * 0.95;
+                salary * 0.95
             } else if salary <= 100_000.0 {
-                return salary * 0.85;
+                salary * 0.85
             } else {
-                return salary * 0.80;
+                salary * 0.80
             }
-
         }
-        else {
+        Country::USA => {
+            salary * 0.75
+        }
+        Country::Monaco => {
             salary
         }
+        Country::Italy => {
+            salary * 0.65
+        }
+        Country::Switzerland => {
+            salary * 0.85
+        }
+    }
+
+    
     }
 
     //static function
@@ -54,12 +72,13 @@ fn main() {
         name: String::from("ASH"),
         age: 20,
         salary: 10000000,
-        country: String::from("England")
+        country: Country::Monaco
     };
 
     println!("name: {}, age: {}", user1.name, user1.age);
     User::info();
     println!("Monthly salary : {}", user1.monthly_salary());
     println!("After tax : {}", user1.after_tax());
+    println!("Country : {:?}", user1.country);
 
 }
