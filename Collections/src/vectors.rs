@@ -1,16 +1,34 @@
+
+
 pub fn run() {
-    
-    // Printing Vector
-    let mut v = Vec::new();
+   
+    let mut v =  Vec::new();
     v.push(1);
     v.push(2);
+    v.push(6);
+    v.push(4);
 
-    println!("{:?}", v);
+    let v3: Vec<i32> = vec![3, 81, 16, 63];
 
-    // using vec! macro
-    let v1: Vec<i32> = vec![1,2,3];
+    let v2: Vec<i32> = even(&v);
 
-    for i in v1 {
-        println!("{}", i);
+    println!("{:?}",v);
+    println!("{:?}", v2);
+    println!("{:?}", v3);
+
+
+}
+
+
+fn even(v: &Vec<i32>) -> Vec<i32> {
+    let mut v2: Vec<i32> = Vec::new();
+
+    for val in v {
+        if val % 2 == 0 {
+            v2.push(*val);
+        }
     }
+
+    return v2;
+
 }
