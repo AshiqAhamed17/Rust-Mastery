@@ -31,16 +31,23 @@ fn main() {
         println!("{}", val);
     }
 
-    let v2 = vec![1, 2, 3];
-    let v2_iter = v2.iter();
-    let total: i32 = v2_iter.sum(); // Takes the ownership of v2_iter, v2_iter cannot be used again
-    assert_eq!(total, 6);
-    println!("The sum is {}", total);
+    let v2 = vec![1, 2, 3, 4];
+    let v2_iter = v2.iter(); //// Takes the ownership of v2_iter, v2_iter cannot be used again
+    //let total: i32 = v2_iter.sum();
+    //assert_eq!(total, 10, "Total is incorrect");
+    let iter2 = v2_iter.map(|x| x * 2);
+    for i in iter2 {
+        println!("map vals: {}", i);
+    }
+
+    println!("{:?}", v2);
+
+
 
     // * Filter all odd values then double each value and create a new vector.
     let vect = vec![1, 2, 3, 4, 5];
     let ans = filter_and_map(vect);
-    println!("{:?}", ans);
+    println!(" Filter and map: {:?}", ans);
 
     // * Iterators over Hashmaps
     let mut scores = HashMap::new();
@@ -56,7 +63,14 @@ fn main() {
 }
 
 fn filter_and_map(v: Vec<i32>) -> Vec<i32> {
-    let new_itr = v.iter().filter(|x| *x%2 == 1).map(|x| x * 2);
-    let new_vec: Vec<i32> = new_itr.collect();
-    return new_vec;
+    let ans_vec: Vec<i32>;
+    let iter = v.iter();
+
+    let iter2 = iter.filter(|x| *x% 2 == 1).map(|x| x * 2);
+
+    ans_vec = iter2.collect();
+
+    ans_vec
+
 }
+
